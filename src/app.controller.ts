@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PaymentQueueService } from './events/payment-queue/payment-queue.service';
 import { PaymentOrderMessage } from './events/payment-queue.interface';
+import { Public } from './auth/decorators/public.decorator';
 
 @Controller()
 export class AppController {
@@ -10,11 +11,13 @@ export class AppController {
     private readonly paymentQueueService: PaymentQueueService,
   ) {}
 
+  @Public()
   @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
+  @Public()
   @Post('test/send-message')
   async testSendMessage(@Body() body?: Partial<PaymentOrderMessage>) {
     const testMessage: PaymentOrderMessage = {
@@ -29,7 +32,6 @@ export class AppController {
         },
       ],
       paymentMethod: body?.paymentMethod || 'credit_card',
-      description: body?.description || 'Mensagem de teste',
       createdAt: new Date(),
     };
 
