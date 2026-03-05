@@ -6,7 +6,7 @@ import {
   JoinColumn,
   CreateDateColumn,
 } from 'typeorm';
-import { Cart } from './cart.entity';
+import { Cart } from './cart.entity.js';
 
 @Entity()
 export class CartItem {

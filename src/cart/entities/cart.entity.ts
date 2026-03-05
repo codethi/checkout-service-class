@@ -6,8 +6,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CartStatus } from '../enums/cart-status.enum';
-import { CartItem } from './cart-item.entity';
+import { CartStatus } from '../enums/cart-status.enum.js';
+import { CartItem } from './cart-item.entity.js';
 
 @Entity()
 export class Cart {
