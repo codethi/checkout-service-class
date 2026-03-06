@@ -8,6 +8,7 @@ import { databaseConfig } from './config/database.config';
 import { AuthModule } from './auth/auth.module';
 import { CartModule } from './cart/cart.module';
 import { OrdersModule } from './orders/orders.module';
+import { MetricsModule } from './metrics/metrics.module';
 import { HealthController } from './health/health.controller';
 
 @Module({
@@ -16,6 +17,7 @@ import { HealthController } from './health/health.controller';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot(databaseConfig),
+    MetricsModule,
     EventsModule,
     AuthModule,
     CartModule,
